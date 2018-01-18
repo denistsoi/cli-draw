@@ -4,7 +4,7 @@
   "description": "a drawing program",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec test/spec"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,9 @@
     "url": "https://github.com/denistsoi/draw/issues"
   },
   "homepage": "https://github.com/denistsoi/draw#readme",
-  "dependencies": {
+  "devDependencies": {
     "chai": "^4.1.2",
+    "expect": "^22.1.0",
     "mocha": "^4.1.0"
   }
 }

@@ -25,9 +25,8 @@ let width = 20;
 
 let canvas = createCanvas(width, height);
 
-console.log('h: ', height, canvas[0].length);
-console.log('w: ', width, canvas.length);
-
+// console.log('h: ', height, canvas[0].length);
+// console.log('w: ', width, canvas.length);
 
 let border = {
   topLength: canvas.length + 2, 
@@ -49,4 +48,4 @@ let sideBorder = new Array(border.sideLength).fill('|');
 //   return 
 // }
 
-console.log('full c: ', topBorder.length, sideBorder.length);
+// console.log('full c: ', topBorder.length, sideBorder.length);
