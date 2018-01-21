@@ -38,6 +38,11 @@ describe('Canvas', () => {
 
   it('should return a canvas to string', () => {
     let canvas = new Canvas(2,2);
-    canvas.printCanvas().should.equal('----\n'+'|  |\n'+'|  |\n'+'----\n');
+    canvas.printCanvas().should.equal([
+      '----',
+      '|  |',
+      '|  |',
+      '----\n',
+    ].join('\n'));
   })
 })
