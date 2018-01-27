@@ -1,6 +1,4 @@
 const Canvas = require('../../lib/commands/canvas');
-// const canvasToString = require('../../lib/helpers/canvasToString');
-// const createBorder = require('../../lib/helpers/createBorder');
 
 const expect = require('expect');
 const should = require('chai').should();
