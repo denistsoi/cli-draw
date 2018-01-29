@@ -3,6 +3,9 @@ const bucket = require('../../lib/commands/bucket');
 const drawLine = require('../../lib/commands/line');
 const rectangle = require('../../lib/commands/rectangle');
 
+const expect = require('expect');
+const should = require('chai').should();
+
 describe('e2e', () => {
   it('should fill an canvas', () => {
     let canvas = new Canvas(20,4);
@@ -120,7 +123,7 @@ describe('e2e', () => {
 
   });
 
-  it('should fill an border of rectangle', () => {
+  it('should fill a border of rectangle', () => {
     let canvas = new Canvas(20,4);
 
     canvas.printCanvas().should.equal([
@@ -231,6 +234,7 @@ describe('e2e', () => {
       '------------\n',
     ].join('\n'));
 
+    
     bucket(canvas, { x: 10, y: 10 }, 'o');
     
     canvas.printCanvas().should.equal([
@@ -247,5 +251,99 @@ describe('e2e', () => {
       '|ooooooxooo|',
       '------------\n',
     ].join('\n'));
+    
+  }); 
+
+  it('should fill an canvas with odd shape with gaps', () => {
+    let canvas = new Canvas(10,10);
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '------------\n',
+    ].join('\n'));
+
+    rectangle(canvas, { x1: 3, y1: 3, x2: 8, y2: 6 });
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|          |',
+      '|          |',
+      '|  xxxxxx  |',
+      '|  x    x  |',
+      '|  x    x  |',
+      '|  xxxxxx  |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '------------\n',
+    ].join('\n'));
+
+    drawLine(canvas, { x1: 7, y1: 6, x2: 7, y2: 10 })
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|          |',
+      '|          |',
+      '|  xxxxxx  |',
+      '|  x    x  |',
+      '|  x    x  |',
+      '|  xxxxxx  |',
+      '|      x   |',
+      '|      x   |',
+      '|      x   |',
+      '|      x   |',
+      '------------\n',
+    ].join('\n'));
+
+    drawLine(canvas, { x1: 7, y1: 8, x2: 8, y2: 8 })
+    drawLine(canvas, { x1: 10, y1: 8, x2: 10, y2: 8 })
+
+    drawLine(canvas, { x1: 8, y1: 4, x2: 8, y2: 4 }, ' ')
+    drawLine(canvas, { x1: 6, y1: 1, x2: 6, y2: 2 })
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|     x    |',
+      '|     x    |',
+      '|  xxxxxx  |',
+      '|  x       |',
+      '|  x    x  |',
+      '|  xxxxxx  |',
+      '|      x   |',
+      '|      xx x|',
+      '|      x   |',
+      '|      x   |',
+      '------------\n',
+    ].join('\n'));
+
+    bucket(canvas, { x: 10, y: 10 }, 'o');
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|     xoooo|',
+      '|     xoooo|',
+      '|  xxxxxxoo|',
+      '|  xooooooo|',
+      '|  xooooxoo|',
+      '|  xxxxxxoo|',
+      '|      xooo|',
+      '|      xxox|',
+      '|      xooo|',
+      '|      xooo|',
+      '------------\n',
+    ].join('\n'));
+
+    
   }); 
 });

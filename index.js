@@ -3,7 +3,3 @@
 /**
  * Drawing Program
  */
-
-/**
- * import external dependencies
- */

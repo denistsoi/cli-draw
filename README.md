@@ -20,12 +20,7 @@ https://github.com/denistsoi/draw
 
 - Canvas can fit in memory (finite canvas)
 - params (width/height || x/y coords) are non-negative integers
-- rectangle feature could draw if within range of canvas (i.e. out of range?)
-
-### todo
-
-- [ ] validate params as number/integers
-
+- rectangle feature could draw if within range of canvas
 
 ### author
 
