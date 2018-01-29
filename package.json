@@ -4,7 +4,8 @@
   "description": "a drawing program",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec test/spec"
+    "test": "mocha -R spec test/*",
+    "dev-test": "mocha -b -t 3000 -w -R spec test/*"
   },
   "repository": {
     "type": "git",
