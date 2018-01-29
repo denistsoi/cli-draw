@@ -120,7 +120,7 @@ describe('e2e', () => {
 
   });
 
-  it('should fill an canvas', () => {
+  it('should fill an border of rectangle', () => {
     let canvas = new Canvas(20,4);
 
     canvas.printCanvas().should.equal([
@@ -177,4 +177,75 @@ describe('e2e', () => {
     ].join('\n'));
 
   });  
+
+
+  it('should fill an canvas with odd shape', () => {
+    let canvas = new Canvas(10,10);
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '------------\n',
+    ].join('\n'));
+
+    rectangle(canvas, { x1: 3, y1: 3, x2: 8, y2: 6 });
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|          |',
+      '|          |',
+      '|  xxxxxx  |',
+      '|  x    x  |',
+      '|  x    x  |',
+      '|  xxxxxx  |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '|          |',
+      '------------\n',
+    ].join('\n'));
+
+    drawLine(canvas, { x1: 7, y1: 6, x2: 7, y2: 10 })
+
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|          |',
+      '|          |',
+      '|  xxxxxx  |',
+      '|  x    x  |',
+      '|  x    x  |',
+      '|  xxxxxx  |',
+      '|      x   |',
+      '|      x   |',
+      '|      x   |',
+      '|      x   |',
+      '------------\n',
+    ].join('\n'));
+
+    bucket(canvas, { x: 10, y: 10 }, 'o');
+    
+    canvas.printCanvas().should.equal([
+      '------------',
+      '|oooooooooo|',
+      '|oooooooooo|',
+      '|ooxxxxxxoo|',
+      '|oox    xoo|',
+      '|oox    xoo|',
+      '|ooxxxxxxoo|',
+      '|ooooooxooo|',
+      '|ooooooxooo|',
+      '|ooooooxooo|',
+      '|ooooooxooo|',
+      '------------\n',
+    ].join('\n'));
+  }); 
 });
