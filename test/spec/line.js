@@ -5,7 +5,6 @@ const expect = require('expect');
 const should = require('chai').should();
 
 describe('drawLine', () => {
-
   it('should draw a horizontal line to a canvas', () => {
     let canvas = new Canvas(4,4);
 
@@ -155,5 +154,33 @@ describe('drawLine', () => {
     ].join('\n'));    
   });
 
+  it('should draw a horizontal line but not go over canvas', () => {
+    let canvas = new Canvas(4,4);
 
+    drawLine(canvas, { x1: 2, y1: 1, x2: 5, y2: 1 })
+
+    canvas.printCanvas().should.equal([
+      '------',
+      '| xxx|',
+      '|    |',
+      '|    |',
+      '|    |',
+      '------\n',
+    ].join('\n'));    
+  });
+
+  it('should draw a vertical line but not go over canvas', () => {
+    let canvas = new Canvas(4,4);
+
+    drawLine(canvas, { x1: 3, y1: 3, x2: 3, y2: 5 })
+
+    canvas.printCanvas().should.equal([
+      '------',
+      '|    |',
+      '|    |',
+      '|  x |',
+      '|  x |',
+      '------\n',
+    ].join('\n'));    
+  });
 })
